@@ -2,6 +2,10 @@
   "name": "radioco-api",
   "version": "0.1.0",
   "description": "An API wrapper for radio.co",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamesatjaminit/radioco-api.git"
+  },
   "main": "dist/main.js",
   "scripts": {
     "build": "tsc",
