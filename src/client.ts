@@ -19,18 +19,36 @@ async function makeRequest(request: AxiosRequestConfig) {
   return responseJson;
 }
 export class RadioCo {
+  /**
+   * Get the track history of a station
+   * @param stationId Station ID
+   * @returns Track history
+   */
   async getStationHistory(stationId: string) {
     return (await makeRequest({
       method: "GET",
       url: `${stationId}/history`,
     })) as StationHistory;
   }
+
+  /**
+   * Gets the next track to be played on a station
+   * @param stationId Station ID
+   * @returns Next track to be played
+   */
   async getNextTrack(stationId: string) {
     return (await makeRequest({
       method: "GET",
       url: `${stationId}/next`,
     })) as StationNextTrack;
   }
+
+  /**
+   * Request a track to be played on a station
+   * @param stationId Station ID
+   * @param trackId Requested track ID
+   * @returns Nothing
+   */
   async requestTrack(stationId: string, trackId: number) {
     return (await makeRequest({
       method: "POST",
@@ -43,18 +61,36 @@ export class RadioCo {
       }),
     })) as void;
   }
+
+  /**
+   * Get the requestable tracks of a station
+   * @param stationId Station ID
+   * @returns Available tracks to be requested
+   */
   async getRequestableTracks(stationId: string) {
     return (await makeRequest({
       method: "GET",
       url: `${stationId}/requests/tracks`,
     })) as StationRequestableTracks;
   }
+
+  /**
+   * Get the status of a station
+   * @param stationId Station ID
+   * @returns Station status
+   */
   async getStationStatus(stationId: string): Promise<StationStatus> {
     return (await makeRequest({
       method: "GET",
       url: `${stationId}/status`,
     })) as StationStatus;
   }
+
+  /**
+   * Get the schedule of a station
+   * @param stationId Station ID
+   * @returns Station schedule
+   */
   async getStationSchedule(stationId: string) {
     return (await makeRequest({
       method: "GET",
