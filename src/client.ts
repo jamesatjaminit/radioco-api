@@ -47,14 +47,20 @@ export class RadioCo {
    * Request a track to be played on a station
    * @param stationId Station ID
    * @param trackId Requested track ID
+   * @param deviceIdentifier Optional device fingerprint ID to associate with the request
    * @returns Nothing
    */
-  async requestTrack(stationId: string, trackId: number) {
+  async requestTrack(
+    stationId: string,
+    trackId: number,
+    deviceIdentifier?: string
+  ) {
     return (await makeRequest({
       method: "POST",
       url: `${stationId}/requests`,
       headers: {
         "content-type": "application/json",
+        "device-identifier": deviceIdentifier ?? "",
       },
       data: JSON.stringify({
         track_id: trackId,
