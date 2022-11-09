@@ -11,6 +11,11 @@ async function makeRequest(request: AxiosRequestConfig) {
   const response = await axios.request({
     ...request,
     baseURL: API_BASE_URL,
+    headers: {
+      "User-Agent":
+        "Radio.co API Client https://github.com/jamesatjaminit/radioco-api",
+      ...request.headers,
+    },
   });
   const responseJson = await response.data;
   if (responseJson.errors) {
