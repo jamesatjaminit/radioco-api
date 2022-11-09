@@ -1,6 +1,6 @@
 # Radio.co API Wrapper
 
-A very simple API wrapper, in javascript for the [Radio.co API](https://developers-84608658bd058c817.radio.co/api-reference/openapi_specs/public-v1).  
+A very simple API wrapper, in typescript for the [Radio.co API](https://developers-84608658bd058c817.radio.co/api-reference/openapi_specs/public-v1).  
 Basic docs are linked below but for more information/help please join the discord server.
 
 - Support Discord Server: [https://discord.gg/DTcwugcgZ2](https://discord.gg/DTcwugcgZ2)
