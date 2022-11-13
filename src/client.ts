@@ -16,6 +16,7 @@ async function makeRequest(request: AxiosRequestConfig) {
         "Radio.co API Client https://github.com/jamesatjaminit/radioco-api",
       ...request.headers,
     },
+    validateStatus: (code) => code < 500,
   });
   const responseJson = await response.data;
   if (responseJson.errors) {
