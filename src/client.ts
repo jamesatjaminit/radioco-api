@@ -1,5 +1,5 @@
-const API_BASE_URL = "https://public.radio.co/stations/";
 import axios, { AxiosRequestConfig } from "axios";
+import { API_BASE_URL } from "./consts";
 import type {
   StationHistory,
   StationNextTrack,
