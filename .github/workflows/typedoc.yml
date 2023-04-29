@@ -1,6 +1,6 @@
 name: Typedoc
 
-on: 
+on:
   push:
     branches:
       - main
@@ -38,7 +38,7 @@ jobs:
         run: pnpm run build
 
       - name: Create the docs directory locally in CI
-        run: pnpm typedoc src/main.ts
+        run: pnpm typedoc
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
