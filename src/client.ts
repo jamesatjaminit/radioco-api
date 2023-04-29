@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from "axios";
+import ky, { Options as KyRequestOptions } from "ky-universal";
 import { API_BASE_URL } from "./consts";
 import type {
   StationHistory,
@@ -7,18 +7,19 @@ import type {
   StationSchedule,
   StationStatus,
 } from "./types";
-async function makeRequest(request: AxiosRequestConfig) {
-  const response = await axios.request({
+async function makeRequest(request: KyRequestOptions & { url: string }) {
+  const response = await ky(request.url, {
     ...request,
-    baseURL: API_BASE_URL,
+    prefixUrl: API_BASE_URL,
     headers: {
       "User-Agent":
         "Radio.co API Client https://github.com/jamesatjaminit/radioco-api",
       ...request.headers,
     },
-    validateStatus: (code) => code < 500,
   });
-  const responseJson = await response.data;
+  const responseJson = (await response.json()) as {
+    errors?: { message: string }[];
+  };
   if (responseJson.errors) {
     throw new Error(responseJson.errors[0].message);
   }
@@ -68,10 +69,10 @@ export class RadioCo {
         "content-type": "application/json",
         "device-identifier": deviceIdentifier ?? "",
       },
-      data: JSON.stringify({
+      body: JSON.stringify({
         track_id: trackId,
       }),
-    })) as void;
+    })) as unknown as void;
   }
 
   /**
