@@ -1,19 +1,24 @@
 # Radio.co API Wrapper
 
-A very simple API wrapper, in typescript for the [Radio.co API](https://developers-84608658bd058c817.radio.co/api-reference/openapi_specs/public-v1).  
-Basic docs are linked below but for more information/help please join the discord server.
+A very simple
+[Radio.co API](https://developers-84608658bd058c817.radio.co/api-reference/openapi_specs/public-v1)
+wrapper, for Node.js and Deno.
 
-- Support Discord Server: [https://discord.gg/DTcwugcgZ2](https://discord.gg/DTcwugcgZ2)
-- Documentation: [https://jamesatjaminit.github.io/radioco-api/](https://jamesatjaminit.github.io/radioco-api/)
+- Documentation: <https://deno.land/x/radioco_api/mod.ts>
 
 ## Usage
+
+### Npm
 
 ```bash
 npm install radioco-api
 ```
 
+### Example
+
 ```typescript
-import RadioCo from "radioco-api";
+import RadioCo from "radioco-api"; // NPM
+import RadioCo from "https://deno.land/x/radioco_api/mod.ts"; // Deno
 
 const radioCo = new RadioCo();
 const STATION_ID = "YOUR_STATION_ID";

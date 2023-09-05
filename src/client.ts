@@ -1,16 +1,14 @@
-import ky, { Options as KyRequestOptions } from "ky-universal";
-import { API_BASE_URL } from "./consts";
+import { API_BASE_URL } from "./consts.ts";
 import type {
   StationHistory,
   StationNextTrack,
   StationRequestableTracks,
   StationSchedule,
   StationStatus,
-} from "./types";
-async function makeRequest(request: KyRequestOptions & { url: string }) {
-  const response = await ky(request.url, {
+} from "./types.ts";
+async function makeRequest(request: RequestInit & { url: string }) {
+  const response = await fetch(`${API_BASE_URL}/${request.url}`, {
     ...request,
-    prefixUrl: API_BASE_URL,
     headers: {
       "User-Agent":
         "Radio.co API Client https://github.com/jamesatjaminit/radioco-api",
@@ -60,7 +58,7 @@ export class RadioCo {
   async requestTrack(
     stationId: string,
     trackId: number,
-    deviceIdentifier?: string
+    deviceIdentifier?: string,
   ) {
     return (await makeRequest({
       method: "POST",
